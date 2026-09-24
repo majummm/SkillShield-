@@ -1,0 +1,371 @@
+:root {
+  --paper: #F6F1E6;
+  --paper-deep: #EFE7D6;
+  --ink: #20223A;
+  --ink-soft: #55597A;
+  --line: #DCD2B8;
+  --safe: #3F6F52;
+  --safe-bg: #E4EEE3;
+  --warn: #B4741E;
+  --warn-bg: #F5E7CF;
+  --danger: #9C3B3B;
+  --danger-bg: #F3DEDA;
+  --leather: #7C5B3B;
+  --leather-deep: #63472C;
+  --serif: "Source Serif 4", Georgia, serif;
+  --sans: "Inter", -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  min-height: 100%;
+}
+
+.hidden { display: none !important; }
+
+/* ---------- Masthead ---------- */
+.masthead {
+  border-bottom: 2px solid var(--ink);
+  background: var(--paper);
+  padding: 18px env(safe-area-inset-right, 0px) 14px calc(env(safe-area-inset-left, 0px));
+}
+.masthead-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.brand {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.01em;
+}
+.brand-tagline {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+/* ---------- Cadastro ---------- */
+.tela-cadastro {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+.cadastro-card {
+  max-width: 480px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  box-shadow: 0 1px 0 var(--line), 0 18px 40px -28px rgba(32, 34, 58, 0.35);
+  padding: 40px 36px;
+}
+.cadastro-eyebrow {
+  margin: 0 0 6px;
+  color: var(--leather);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+.cadastro-card h1 {
+  font-family: var(--serif);
+  font-size: 2rem;
+  margin: 0 0 14px;
+  line-height: 1.15;
+}
+.cadastro-texto {
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin: 0 0 24px;
+}
+#input-nome {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--paper);
+  margin-bottom: 14px;
+}
+#input-nome:focus, textarea:focus {
+  outline: 2px solid var(--leather);
+  outline-offset: 1px;
+}
+button {
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  padding: 12px 20px;
+  background: var(--ink);
+  color: var(--paper);
+  transition: background 0.15s ease;
+}
+button:hover { background: var(--leather-deep); }
+button:disabled { opacity: 0.55; cursor: default; }
+
+.erro {
+  color: var(--danger);
+  background: var(--danger-bg);
+  border: 1px solid var(--danger);
+  border-radius: 3px;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  margin-top: 14px;
+}
+.carregando {
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-top: 12px;
+  font-size: 0.92rem;
+}
+
+/* ---------- Layout principal ---------- */
+.layout {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .layout { grid-template-columns: 1fr; }
+}
+
+/* ---------- Dossie (sidebar) ---------- */
+.dossie {
+  background: var(--paper-deep);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 24px 22px;
+  position: sticky;
+  top: 20px;
+}
+@media (max-width: 760px) { .dossie { position: static; } }
+
+.dossie-label {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+.dossie h2 {
+  font-family: var(--serif);
+  margin: 2px 0 10px;
+  font-size: 1.35rem;
+}
+.dossie-nivel {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--leather-deep);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 22px;
+}
+
+.ssi-bloco {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 26px;
+}
+.ssi-anel {
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  background: conic-gradient(var(--ink) 0deg, var(--ink) 0deg, var(--line) 0deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  transition: background 0.4s ease;
+}
+.ssi-anel::before {
+  content: "";
+  position: absolute;
+}
+.ssi-anel span {
+  background: var(--paper-deep);
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.ssi-legenda {
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.vulnerabilidade h3 {
+  font-family: var(--serif);
+  font-size: 1rem;
+  margin: 0 0 4px;
+}
+.vulnerabilidade-legenda {
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  margin: 0 0 12px;
+}
+.vuln-linha {
+  margin-bottom: 10px;
+}
+.vuln-linha-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 3px;
+}
+.vuln-linha-valor { font-weight: 600; }
+.vuln-barra-fundo {
+  height: 7px;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.vuln-barra-preenchimento {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.dossie-contagem {
+  margin: 22px 0 0;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  border-top: 1px dashed var(--line);
+  padding-top: 14px;
+}
+
+/* ---------- Caso ---------- */
+.caso-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: none;
+  border-radius: 0 4px 4px 4px;
+  padding: 30px 32px 32px;
+  box-shadow: 0 18px 40px -30px rgba(32, 34, 58, 0.4);
+}
+.caso-tab {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  align-items: center;
+  background: var(--leather);
+  color: #fff;
+  width: fit-content;
+  padding: 8px 18px;
+  border-radius: 4px 4px 0 0;
+  transform: translateY(-1px);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.caso-numero { font-family: var(--serif); font-size: 0.95rem; }
+.caso-categoria::before { content: "· "; }
+.caso-dificuldade { opacity: 0.85; }
+.caso-dificuldade::before { content: "· "; }
+
+.caso-contexto {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.55;
+  margin: 22px 0 8px;
+}
+.caso-situacao {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink);
+  font-weight: 600;
+  margin: 0 0 24px;
+}
+
+label[for="resposta-livre"] {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--paper);
+  resize: vertical;
+  line-height: 1.5;
+}
+
+#btn-enviar { margin-top: 16px; }
+
+/* ---------- Veredito ---------- */
+.veredito {
+  margin-top: 26px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 30px 32px;
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.stamp {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.03em;
+  border: 3px solid currentColor;
+  border-radius: 6px;
+  padding: 14px 20px;
+  transform: rotate(-6deg);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.stamp.risco-baixo { color: var(--safe); background: var(--safe-bg); }
+.stamp.risco-medio { color: var(--warn); background: var(--warn-bg); }
+.stamp.risco-alto  { color: var(--danger); background: var(--danger-bg); }
+
+.veredito-detalhes { flex: 1; min-width: 240px; }
+.veredito-detalhes h3 {
+  font-family: var(--serif);
+  font-size: 1rem;
+  margin: 0 0 8px;
+}
+.veredito-detalhes h3:not(:first-child) { margin-top: 20px; }
+.veredito-detalhes ul {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.6;
+}
+.veredito-detalhes li.demonstrado { color: var(--safe); }
+.veredito-detalhes li.nao-demonstrado { color: var(--ink-soft); }
+
+#btn-proximo { margin-top: 22px; }
